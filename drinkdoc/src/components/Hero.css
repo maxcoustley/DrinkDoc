@@ -1,0 +1,39 @@
+.hero {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+.hero-text {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: black;
+    padding-top: 25%;
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: black;
+    padding: 0.5rem 0 2.5rem 0;
+}
+
+.hero-text .show{
+    text-decoration: none;
+    background: #20BF55;
+    padding: 1.1rem 2rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: black;
+}
