@@ -46,6 +46,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.submit button {
+    background: #20BF55;
+    border: none;
+    font-size: 19px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    gap: 25px;
     width: 220px;
     height: 59px;
     color: #fff;
@@ -53,6 +64,5 @@
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
-    cursor: pointer;
-    margin: 60px 44%;
+    margin: 60px 20px;
 }
