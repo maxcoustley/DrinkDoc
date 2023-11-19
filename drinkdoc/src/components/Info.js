@@ -1,6 +1,6 @@
 import "./Info.css";
 import React, { useState } from 'react';
-import Event from './Event';
+
 
 function Info() {
 
@@ -13,7 +13,6 @@ function Info() {
     const [drunkLevel, setDrunkLevel] = useState('');
     const [showStep1, setShowStep1] = useState(true);
     const [showStep2, setShowStep2] = useState(false);
-    const [showResult, setShowResult] = useState(false);
 
     const handleNextClick = () => {
         setShowStep1(false);
@@ -26,7 +25,7 @@ function Info() {
     }
 
     const handleSubmitClick = () => {
-        setShowResult(true)
+        
     }
 
     return (
@@ -74,10 +73,7 @@ function Info() {
                         <button type="button" onClick={handleSubmitClick}>Start</button>
                     </div>
                 </div>
-
             )}
-            
-            {showResult && <Event />}
         </>
     );
 }
