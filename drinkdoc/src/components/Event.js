@@ -1,8 +1,11 @@
+import DrinkMeter from "./DrinkMeter";
 import "./Event.css";
 
 function Event(props) {
+    const fillPercentage = 0
+
     return (<>
-    <h1>HELLO</h1>
+        <DrinkMeter fillPercentage={fillPercentage} />
     </>)
 }
 
