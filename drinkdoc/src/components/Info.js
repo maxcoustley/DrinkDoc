@@ -26,6 +26,8 @@ function Info() {
     }
 
     const handleSubmitClick = () => {
+        setShowStep1(false);
+        setShowStep2(false);
         setShowResult(true)
     }
 
@@ -77,7 +79,17 @@ function Info() {
 
             )}
             
-            {showResult && <Event />}
+            {showResult && (
+                <Event
+                    name={name}
+                    gender={gender}
+                    weight={weight}
+                    startTime={startTime}
+                    peakTime={peakTime}
+                    mainTime={mainTime}
+                    drunkLevel={drunkLevel}
+                 />
+            )}
         </>
     );
 }
