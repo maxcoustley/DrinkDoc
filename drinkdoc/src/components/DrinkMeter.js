@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './DrinkMeter.css';
+import AddDrink from './AddDrink';
 
 function DrinkMeter({ fillPercentage }) {
     const canvasRef = useRef(null);
@@ -30,8 +31,14 @@ function DrinkMeter({ fillPercentage }) {
         ctx.fillRect(width / 2 - 35, height - 20, 70, -mercuryHeight);
     }, [fillPercentage]);
 
+    const handleAddDrink= () => {
+        // Handle the click action for the FAB here
+        
+    };
+
     return (
         <div className="drink-meter">
+            <AddDrink onClick={handleAddDrink} label="Add Drink" />
             <canvas ref={canvasRef} width={160} height={500} />
         </div>
     );
