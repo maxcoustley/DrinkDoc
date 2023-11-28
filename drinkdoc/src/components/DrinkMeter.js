@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './DrinkMeter.css';
 import AddDrink from './AddDrink';
 
-function DrinkMeter({ fillPercentage }) {
+function DrinkMeter(props) {
     const canvasRef = useRef(null);
+    const [fillPercentage, setFillPercentage] = useState(0);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -32,8 +33,25 @@ function DrinkMeter({ fillPercentage }) {
     }, [fillPercentage]);
 
     const handleAddDrink = (alcGrams) => {
-        // Handle the click action for the FAB here
+        // Calculate the BAC to add to the drink meter
         console.log('Alcohol in grams received in DrinkMeter:', alcGrams);
+        let r = 0;
+
+        if (props.gender === "male") {
+            r = 0.68;
+        }
+        else {
+            r = 0.55;
+        }
+        const BAC = (alcGrams / ((props.weight * 1000) * r)) * 100;
+
+        console.log('BAC:', BAC);
+        const modifiedBAC = Math.round(BAC * 833.333);
+
+        //update fillPercentage
+        const newFillPercentage = fillPercentage + modifiedBAC;
+
+        setFillPercentage(newFillPercentage)
     };
 
     return (

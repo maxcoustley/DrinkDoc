@@ -44,7 +44,7 @@ function Info() {
                             <input type='text' placeholder="Gender" value={gender} onChange={(e) => setGender(e.target.value)} />
                         </div>
                         <div className='input'>
-                            <input type='text' placeholder="Body Weight" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                            <input type='number' placeholder="Body Weight" value={weight} onChange={(e) => setWeight(e.target.value)} />
                         </div>
                     </div>
                     <div className="submit">

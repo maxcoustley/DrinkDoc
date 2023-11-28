@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddDrink.css';
 
-function AddDrink({ onClick, label, onAlcoholCalculation }) {
+function AddDrink({ label, onAlcoholCalculation }) {
     const [showForm, setShowForm] = useState(false);
     const [drinkName, setDrinkName] = useState('');
     const [drinkType, setDrinkType] = useState('');
