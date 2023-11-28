@@ -36,7 +36,7 @@
     width: 100%;
 }
 
-.form-popup input[type="text"] {
+.form-popup input {
     width: calc(100% - 20px);
     margin-bottom: 10px;
     padding: 8px;

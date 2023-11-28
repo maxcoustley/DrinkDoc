@@ -31,14 +31,14 @@ function DrinkMeter({ fillPercentage }) {
         ctx.fillRect(width / 2 - 35, height - 20, 70, -mercuryHeight);
     }, [fillPercentage]);
 
-    const handleAddDrink= () => {
+    const handleAddDrink = (alcGrams) => {
         // Handle the click action for the FAB here
-        
+        console.log('Alcohol in grams received in DrinkMeter:', alcGrams);
     };
 
     return (
         <div className="drink-meter">
-            <AddDrink onClick={handleAddDrink} label="Add Drink" />
+            <AddDrink onAlcoholCalculation={handleAddDrink} label="Add Drink" />
             <canvas ref={canvasRef} width={160} height={500} />
         </div>
     );
