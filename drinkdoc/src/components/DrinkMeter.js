@@ -7,6 +7,24 @@ function DrinkMeter(props) {
     const [fillPercentage, setFillPercentage] = useState(0);
 
     useEffect(() => {
+        const decreaseFill = () => {
+            const eliminationRate = 0.0002833333333;
+
+            if (fillPercentage > 0) {
+                setTimeout(() => {
+                    setFillPercentage(prevFillPerecentage => {
+                        const newFillPercentage = Math.max(prevFillPerecentage - eliminationRate, 0);
+                        return newFillPercentage;
+                    });
+                }, 1000);
+            }
+        };
+
+        decreaseFill();
+        
+    }, [fillPercentage]);
+
+    useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
@@ -30,7 +48,10 @@ function DrinkMeter(props) {
         // Draw the thermometer fluid (mercury)
         ctx.fillStyle = 'red';
         ctx.fillRect(width / 2 - 35, height - 20, 70, -mercuryHeight);
+
     }, [fillPercentage]);
+
+    
 
     const handleAddDrink = (alcGrams) => {
         // Calculate the BAC to add to the drink meter
