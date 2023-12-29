@@ -8,12 +8,15 @@ function DrinkMeter(props) {
 
     useEffect(() => {
         const decreaseFill = () => {
-            const eliminationRate = 0.0002833333333;
+            const eliminationRate = 0.015;
+            const modifiedElimRate = eliminationRate * 833.333;
+            const secondElimRate = modifiedElimRate/3600;
 
             if (fillPercentage > 0) {
                 setTimeout(() => {
                     setFillPercentage(prevFillPerecentage => {
-                        const newFillPercentage = Math.max(prevFillPerecentage - eliminationRate, 0);
+                        const newFillPercentage = Math.max(prevFillPerecentage - secondElimRate, 0);
+                        console.log(newFillPercentage);
                         return newFillPercentage;
                     });
                 }, 1000);
