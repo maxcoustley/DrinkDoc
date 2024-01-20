@@ -1,21 +1,15 @@
 import React, { useState } from "react";
+import 'react-native-gesture-handler';
 import { View, Text } from 'react-native';
-import IntroScreen from './app/screens/IntroScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
-const Stack = createNativeStackNavigator();
+import AuthNavigator from "./app/navigations/AuthNavigator";
 
 const App = () => {
-  // After the intro animation, setIntroComplete(true)
 
   return (
     <NavigationContainer>
-    <Stack.Navigator>
-    <Stack.Screen
-      name="Intro"
-      component={IntroScreen}/>
-    </Stack.Navigator>
+      {/* {isAuthenticated ? AuthNavigator : DrawerNavigator } */}
+      <AuthNavigator />
     </NavigationContainer>
   );
 };

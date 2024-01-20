@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, View, Text, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useNavigation } from '@react-navigation/native';
+import {COLORS, ROUTES} from '../../constants';
 
-const IntroScreen = () => {
+const Intro = () => {
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const navigation = useNavigation();
   
@@ -18,7 +18,7 @@ const IntroScreen = () => {
         ).start();
 
         setTimeout(() => {
-            navigation.navigate('HomeScreen'); // Replace 'NextScreen' with the name of your next screen
+            navigation.navigate(ROUTES.INFO); // Replace 'NextScreen' with the name of your next screen
         }, 2500);
     }, []);
   
@@ -53,4 +53,4 @@ const IntroScreen = () => {
     },
   }); 
 
-export default IntroScreen;
+export default Intro;
