@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {Picker} from '@react-native-picker/picker'
@@ -26,6 +27,19 @@ const Info = () => {
 
         setWeight(numericValue);
     };
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => null,
+        })
+    }, [navigation]);
+
+    useEffect(() => {
+        const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+            return true;
+        })
+        return () => backHandler.remove();
+    }, []);
 
     return (
     <SafeAreaView style={styles.main}>
