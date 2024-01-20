@@ -9,7 +9,6 @@ import {
   BackHandler,
 } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
-import {Picker} from '@react-native-picker/picker'
 import {useNavigation} from '@react-navigation/native';
 import {COLORS, ROUTES} from '../../constants';
 import { RadioButton } from 'react-native-paper';
@@ -18,7 +17,6 @@ const Info = () => {
     const navigation = useNavigation();
     const [value, setValue] = React.useState('male');
     const [weight, setWeight] = useState('');
-    const [unit, setUnit] = useState('kg');
 
 
     const handleWeightInput = (inputValue) => {
@@ -71,7 +69,7 @@ const Info = () => {
                 end={{y: 1.0, x: 0.0}}>
                 {/******************** INFO BUTTON *********************/}
                 <TouchableOpacity
-                  onPress={() => navigation.navigate(ROUTES.HOME)}
+                  onPress={() => navigation.navigate(ROUTES.SESSION)}
                   activeOpacity={0.7}
                   style={styles.infoBtn}>
                   <Text style={styles.infoText}>Continue</Text>

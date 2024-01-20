@@ -4,6 +4,7 @@ import Info from '../screens/auth/Info';
 import Intro from '../screens/home/Intro';
 import Session from '../screens/home/Session';
 import { ROUTES } from '../constants'
+import BottomTabNavigator from './BottomTabNavigator';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,7 @@ function AuthNavigator(props) {
             />
             <Stack.Screen 
                 name={ROUTES.SESSION}
-                component={Session}
+                component={BottomTabNavigator}
             />
         </Stack.Navigator>
     );

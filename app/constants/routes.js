@@ -7,12 +7,11 @@ export default {
     SESSION_DRAWER: 'Session Drawer',
   
     HISTORY: 'History',
-    HISTORY: 'History Drawer',
   
     SETTINGS: 'Settings',
     ACCOUNT_SETTINGS: 'Account Settings',
     SETTINGS_NAVIGATOR: 'Settings Navigator',
   
     SETTINGS_DETAIL: 'Settings Detail',
-    PROFILE: 'My Profile',
+    PROFILE: 'Profile',
   };

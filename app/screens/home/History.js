@@ -1,8 +1,7 @@
 import React from 'react';
 import { Animated, View, Text, StyleSheet } from 'react-native';
-import {COLORS, ROUTES} from '../../constants';
 
-function Session(props) {
+function History(props) {
     return (
         <View
             style={{
@@ -15,4 +14,4 @@ function Session(props) {
     );
 }
 
-export default Session;
+export default History;
