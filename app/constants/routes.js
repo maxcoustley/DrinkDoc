@@ -1,9 +1,8 @@
 export default {
-    INTRO: 'Intro',
     INFO: 'Info',
   
     SESSION: 'Session',
-    SESSION_TAB: 'Session Tab',
+    SESSION_PRE: 'SessionPre',
     SESSION_DRAWER: 'Session Drawer',
   
     HISTORY: 'History',

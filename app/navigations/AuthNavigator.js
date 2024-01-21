@@ -1,20 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Info from '../screens/auth/Info';
-import Intro from '../screens/home/Intro';
-import Session from '../screens/home/Session';
 import { ROUTES } from '../constants'
 import BottomTabNavigator from './BottomTabNavigator';
+import SessionPre from '../screens/home/SessionPre';
 
 const Stack = createStackNavigator();
 
 function AuthNavigator(props) {
     return (
         <Stack.Navigator>
-            <Stack.Screen
-                name={ROUTES.INTRO}
-                component={Intro} 
-            />
             <Stack.Screen 
                 name={ROUTES.INFO}
                 component={Info}
@@ -22,6 +17,10 @@ function AuthNavigator(props) {
             <Stack.Screen 
                 name={ROUTES.SESSION}
                 component={BottomTabNavigator}
+            />
+            <Stack.Screen
+                name={ROUTES.SESSION_PRE}
+                component={SessionPre}
             />
         </Stack.Navigator>
     );
