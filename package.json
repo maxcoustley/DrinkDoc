@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^7.6.2",
     "@react-native-picker/picker": "^2.6.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
@@ -22,7 +23,8 @@
     "react-native-gesture-handler": "^2.14.1",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-paper": "^5.12.1",
-    "react-native-svg": "^14.1.0"
+    "react-native-svg": "^14.1.0",
+    "react-native-timer-picker": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
