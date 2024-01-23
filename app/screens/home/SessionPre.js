@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Button, Text, TouchableOpacity } from 'react-native';
+import { View, Button, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import DateTimePicker from  '@react-native-community/datetimepicker';
+import {useNavigation} from '@react-navigation/native';
+import {COLORS, ROUTES} from '../../constants';
 
 
 function SessionPre(props) {
@@ -8,36 +10,69 @@ function SessionPre(props) {
     const [peakTime, setPeakTime] = useState(new Date());
     const [mainTime, setMainTime] = useState(new Date());
     const [drunkLevel, setDrunkLevel] = useState('');
+    const navigation = useNavigation();
 
-    const onStartTimeChange = (selectedDate) => {
-        const currentDate = selectedDate || startTime;
-        setStartTime(currentDate);
-    };
-
-    const onPeakTimeChange = (selectedDate) => {
-        const currentDate = selectedDate || peakTime;
-        setPeakTime(currentDate);
-    };
-
-    const onMainTimeChange = (selectedTime) => {
-        setMainTime(selectedTime);
+    const onTimeChange = (selectedDate, setTimeFunction) => {
+        const currentDate = selectedDate || new Date();
+        setTimeFunction(currentDate);
     };
 
     return (
-        <View>
-            <Text>Select what time you want to start your session</Text>
-            <DateTimePicker value ={startTime} mode="time" display="default" onChange={onStartTimeChange} />
-            <Text>Select what time you want to reach your peak</Text>
-            <DateTimePicker value ={peakTime} mode="time" display="default" onChange={onPeakTimeChange} />
-            <Text>Select how long you want to maintain that peak</Text>
-            <DateTimePicker value ={mainTime} mode="time" display="default" onChange={onMainTimeChange} />
+        <View style={styles.container}>
+            <Text style={styles.title}>Select start time for your session</Text>
+            <DateTimePicker
+                value={startTime}
+                mode="time"
+                display="default"
+                onChange={(selectedDate) => onTimeChange(selectedDate, setStartTime)}
+            />
+
+            <Text style={styles.title}>Select peak time</Text>
+            <DateTimePicker
+                value={peakTime}
+                mode="time"
+                display="default"
+                onChange={(selectedDate) => onTimeChange(selectedDate, setPeakTime)}
+            />
+
+            <Text style={styles.title}>Select peak maintenance duration</Text>
+            <DateTimePicker
+                value={mainTime}
+                mode="time"
+                display="default"
+                onChange={(selectedTime) => setMainTime(selectedTime)}
+            />
+
             <TouchableOpacity
-                  onPress={() => navigation.navigate(ROUTES.SESSION_PRE)}
-                  activeOpacity={0.7}>
-                  <Text>Start</Text>
+                style={styles.startButton}
+                onPress={() => navigation.navigate(ROUTES.SESSION)}
+                activeOpacity={0.7}>
+                <Text style={styles.buttonText}>Start</Text>
             </TouchableOpacity>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 18,
+        marginBottom: 10,
+    },
+    startButton: {
+        marginTop: 20,
+        padding: 10,
+        backgroundColor: COLORS.primary,
+        borderRadius: 5,
+    },
+    buttonText: {
+        color: COLORS.white,
+        fontSize: 16,
+    },
+});
 
 export default SessionPre;

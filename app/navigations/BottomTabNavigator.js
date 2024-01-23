@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Platform, TouchableOpacity} from 'react-native';
 import {COLORS, ROUTES} from '../constants';
-import Session from '../screens/home/Session';
+import SessionStart from '../screens/home/SessionStart';
 import History from '../screens/home/History';
 import Profile from '../screens/home/Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -30,7 +30,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({color, size, focused}) => {
               let iconName;
 
-              if (route.name === ROUTES.SESSION) {
+              if (route.name === ROUTES.SESSION_START) {
               iconName = focused ? 'beer' : 'beer-outline';
               } else if (route.name === ROUTES.HISTORY) {
               iconName = focused ? 'book' : 'book-outline';
@@ -41,7 +41,7 @@ function BottomTabNavigator() {
               return <Icon name={iconName} size={25} color={color} />;
           },
       })}>
-      <Tab.Screen name={ROUTES.SESSION} component={SessionNavigator} options={{
+      <Tab.Screen name={ROUTES.SESSION_START} component={SessionNavigator} options={{
         tabBarButton: props => <CustomTabBarButton route="session" {...props} />,
       }} />
       <Tab.Screen name={ROUTES.HISTORY} component={History} options={{

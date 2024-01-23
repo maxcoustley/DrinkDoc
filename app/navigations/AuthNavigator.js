@@ -15,7 +15,7 @@ function AuthNavigator(props) {
                 component={Info}
             />
             <Stack.Screen 
-                name={ROUTES.SESSION}
+                name={ROUTES.SESSION_START}
                 component={BottomTabNavigator}
             />
             <Stack.Screen

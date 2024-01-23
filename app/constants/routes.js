@@ -1,9 +1,9 @@
 export default {
     INFO: 'Info',
   
-    SESSION: 'Session',
+    SESSION_START: 'SessionStart',
     SESSION_PRE: 'SessionPre',
-    SESSION_DRAWER: 'Session Drawer',
+    SESSION: 'Session',
   
     HISTORY: 'History',
   

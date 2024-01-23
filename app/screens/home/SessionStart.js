@@ -1,66 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  SafeAreaView,
-  TouchableOpacity,
-  BackHandler,
-} from 'react-native';
-import {LinearGradient} from 'expo-linear-gradient';
+import React from 'react';
+import { Animated, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {LinearGradient} from 'expo-linear-gradient';
 import {COLORS, ROUTES} from '../../constants';
-import { RadioButton } from 'react-native-paper';
 
-const Info = () => {
+function SessionStart(props) {
     const navigation = useNavigation();
-    const [value, setValue] = React.useState('male');
-    const [weight, setWeight] = useState('');
-
-
-    const handleWeightInput = (inputValue) => {
-        // Allow only numeric input for weight
-        const numericValue = inputValue.replace(/[^0-9]/g, ''); // Replace any non-numeric characters with an empty string
-
-        setWeight(numericValue);
-    };
-
-    React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerLeft: () => null,
-        })
-    }, [navigation]);
-
-    useEffect(() => {
-        const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-            return true;
-        })
-        return () => backHandler.remove();
-    }, []);
-
     return (
-    <SafeAreaView style={styles.main}>
-        <View style={styles.container}>
-          <View style={styles.wFull}>
-            <View style={styles.row}>
-              {/* <Logo width={55} height={55} style={styles.mr7} /> */}
-              <Text style={styles.brandName}>DrinkDoc</Text>
-            </View>
-  
-            <Text style={styles.infoContinueTxt}>Fill out the profile information to continue</Text>
-            <TextInput style={styles.input} placeholder="Name" />
-            <View>
-                <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-                    <RadioButton.Item labelStyle={{ color: COLORS.gray}} label="Male" value="male" />
-                    <RadioButton.Item labelStyle={{ color: COLORS.gray}} label="Female" value="female" />
-                </RadioButton.Group>
-            </View>
-            
-           
-            <TextInput style={styles.input} keyboardType="numeric" value={weight} onChangeText={handleWeightInput} placeholder="Weight (kg)" />
-          
-  
+        <View
+            style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
+            <Text>Start your session!</Text>
             <View style={styles.infoBtnWrapper}>
               <LinearGradient
                 colors={[COLORS.gradientForm, COLORS.primary]}
@@ -69,22 +22,34 @@ const Info = () => {
                 end={{y: 1.0, x: 0.0}}>
                 {/******************** INFO BUTTON *********************/}
                 <TouchableOpacity
-                  onPress={() => navigation.navigate(ROUTES.SESSION_START)}
+                  onPress={() => navigation.navigate(ROUTES.SESSION)}
                   activeOpacity={0.7}
                   style={styles.infoBtn}>
-                  <Text style={styles.infoText}>Continue</Text>
+                  <Text style={styles.infoText}>Freestyle session</Text>
                 </TouchableOpacity>
               </LinearGradient>
             </View>
-          </View>
+
+            <View style={styles.infoBtnWrapper}>
+              <LinearGradient
+                colors={[COLORS.gradientForm, COLORS.primary]}
+                style={styles.linearGradient}
+                start={{y: 0.0, x: 0.0}}
+                end={{y: 1.0, x: 0.0}}>
+                {/******************** INFO BUTTON *********************/}
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(ROUTES.SESSION_PRE)}
+                  activeOpacity={0.7}
+                  style={styles.infoBtn}>
+                  <Text style={styles.infoText}>Planned session</Text>
+                </TouchableOpacity>
+              </LinearGradient>
+            </View>
         </View>
-      </SafeAreaView>
     );
-};
+}
 
-
-
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     main: {
       flex: 1,
       justifyContent: 'center',
@@ -125,6 +90,7 @@ const Info = () => {
     // Info Btn Styles
     infoBtnWrapper: {
       height: 55,
+      width: 100,
       marginTop: 12,
       shadowColor: '#000',
       shadowOffset: {
@@ -170,4 +136,4 @@ const Info = () => {
     },
   });
 
-  export default Info;
+export default SessionStart;

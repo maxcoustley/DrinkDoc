@@ -12,7 +12,7 @@ const App = () => {
   return (
     <NavigationContainer>
       {/*isAuthenticated ? <BottomTabNavigator /> : <AuthNavigator />*/}
-      <BottomTabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 };
