@@ -12,10 +12,13 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import {COLORS, ROUTES} from '../../constants';
 import { RadioButton } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Info = () => {
     const navigation = useNavigation();
-    const [value, setValue] = React.useState('male');
+    const [name, setName] = useState('');
+    const [gender, setGender] = React.useState('male');
     const [weight, setWeight] = useState('');
 
 
@@ -24,6 +27,17 @@ const Info = () => {
         const numericValue = inputValue.replace(/[^0-9]/g, ''); // Replace any non-numeric characters with an empty string
 
         setWeight(numericValue);
+    };
+
+    const saveUserInfo = async () => {
+      try {
+        await AsyncStorage.setItem('name', name);
+        await AsyncStorage.setItem('gender', gender);
+        await AsyncStorage.setItem('weight', weight);
+        console.log('Data saved successfully!');
+      } catch (error) {
+        console.error('Error saving data:', error);
+      }
     };
 
     React.useLayoutEffect(() => {
@@ -49,9 +63,9 @@ const Info = () => {
             </View>
   
             <Text style={styles.infoContinueTxt}>Fill out the profile information to continue</Text>
-            <TextInput style={styles.input} placeholder="Name" />
+            <TextInput style={styles.input} onChangeText={setName} placeholder="Name" />
             <View>
-                <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
+                <RadioButton.Group onValueChange={gender => setGender(gender)} value={gender}>
                     <RadioButton.Item labelStyle={{ color: COLORS.gray}} label="Male" value="male" />
                     <RadioButton.Item labelStyle={{ color: COLORS.gray}} label="Female" value="female" />
                 </RadioButton.Group>
@@ -69,7 +83,7 @@ const Info = () => {
                 end={{y: 1.0, x: 0.0}}>
                 {/******************** INFO BUTTON *********************/}
                 <TouchableOpacity
-                  onPress={() => navigation.navigate(ROUTES.SESSION_START)}
+                  onPress={() => { saveUserInfo(); navigation.navigate(ROUTES.SESSION_START); }}
                   activeOpacity={0.7}
                   style={styles.infoBtn}>
                   <Text style={styles.infoText}>Continue</Text>

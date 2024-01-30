@@ -17,10 +17,7 @@ function AuthNavigator(props) {
             <Stack.Screen 
                 name={ROUTES.SESSION_START}
                 component={BottomTabNavigator}
-            />
-            <Stack.Screen
-                name={ROUTES.SESSION_PRE}
-                component={SessionPre}
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     );

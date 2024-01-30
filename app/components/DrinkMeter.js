@@ -2,9 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import AddDrinkButton from './AddDrinkButton';
 import { Svg, Rect } from 'react-native-svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DrinkMeter = (props) => {
     const [fillPercentage, setFillPercentage] = useState(0);
+    const [name, setName] = useState('');
+    const [gender, setGender] = useState('');
+    const [weight, setWeight] = useState('');
 
     useEffect(() => {
         const decreaseFill = () => {
@@ -26,17 +30,43 @@ const DrinkMeter = (props) => {
         decreaseFill();
     }, [fillPercentage]);
 
+    useEffect(() => {
+        loadSavedData();
+      }, []);
+    
+      const loadSavedData = async () => {
+        try {
+          const savedName = await AsyncStorage.getItem('name');
+          if (savedName !== null) {
+            setName(savedName);
+          }
+    
+          const savedGender = await AsyncStorage.getItem('gender');
+          if (savedGender !== null) {
+            setGender(savedGender);
+          }
+    
+          const savedWeight = await AsyncStorage.getItem('weight');
+          if (savedWeight !== null) {
+            setWeight(savedWeight);
+          }
+        } catch (error) {
+          console.error('Error loading saved data:', error);
+        }
+      };
+
     const handleAddDrink = (alcGrams) => {
         // Calculate the BAC to add to the drink meter
         console.log('Alcohol in grams received in DrinkMeter:', alcGrams);
+        
         let r = 0;
 
-        if (props.gender === 'male') {
+        if (gender === 'male') {
             r = 0.68;
         } else {
             r = 0.55;
         }
-        const BAC = (alcGrams / ((props.weight * 1000) * r)) * 100;
+        const BAC = (alcGrams / ((weight * 1000) * r)) * 100;
 
         console.log('BAC:', BAC);
         const modifiedBAC = Math.round(BAC * 833.333);
@@ -53,7 +83,7 @@ const DrinkMeter = (props) => {
 
     return (
         <View style={{ alignItems: 'center' }}>
-            <AddDrinkButton onAlcoholCalculation={handleAddDrink} label="Add Drink" />
+            
             <Svg width={width} height={height}>
                 {/* Draw the thermometer outline */}
                 <Rect x={width / 2 - 40} y={height - 400} width={80} height={400} stroke="black" strokeWidth={2} />
@@ -67,6 +97,7 @@ const DrinkMeter = (props) => {
                     fill="red"
                 />
             </Svg>
+            <AddDrinkButton onAlcoholCalculation={handleAddDrink} label="Add Drink" />
         </View>
     );
 };

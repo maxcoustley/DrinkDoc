@@ -10,9 +10,9 @@ const Stack = createStackNavigator();
 function SessionNavigator() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name={ROUTES.SESSION_START} component={SessionStart} />
+            <Stack.Screen name={ROUTES.SESSION_START} component={SessionStart} options={{headerShown: false}}/>
             <Stack.Screen name={ROUTES.SESSION_PRE} component={SessionPre} />
-            <Stack.Screen name={ROUTES.SESSION} component={Session} />
+            <Stack.Screen name={ROUTES.SESSION} component={Session} options={{headerShown: false}} />
         </Stack.Navigator>
     );
 }
