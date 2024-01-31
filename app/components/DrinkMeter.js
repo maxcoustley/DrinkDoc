@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-nati
 import AddDrinkButton from './AddDrinkButton';
 import { Svg, Rect } from 'react-native-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import QuitSessionButton from './QuitSessionButton';
 
 const DrinkMeter = (props) => {
     const [fillPercentage, setFillPercentage] = useState(0);
@@ -98,6 +99,7 @@ const DrinkMeter = (props) => {
                 />
             </Svg>
             <AddDrinkButton onAlcoholCalculation={handleAddDrink} label="Add Drink" />
+            <QuitSessionButton label="Quit Session" />
         </View>
     );
 };
